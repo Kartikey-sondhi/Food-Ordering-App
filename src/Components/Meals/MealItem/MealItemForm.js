@@ -11,9 +11,8 @@ const MealItemForm = props =>{
 
     const addInputFormHandler = event =>{
         event.preventDefault();
-        // console.log(props.amount);
         const addedItem = {name: props.name, price: props.price, amount: amountInputRef.current.value};
-
+        console.log(addedItem);
         //This following code checks if the meal is already present in the array, it will not add it again, it will simply just update the array with the new length
         const found = mealItemCtx.items.find(element => element.name === `${props.name}`);
         if(found === undefined){
@@ -22,10 +21,15 @@ const MealItemForm = props =>{
         }
         //if it is not present it will add it
         else{
-            console.log(`heyyyy ${found.name}`)
-            mealItemCtx.found.amount = mealItemCtx.found.amount + props.amount*props.quantity;
+            found.amount = found.amount + props.amount*props.price;
+            const temporaryElement = mealItemCtx.items.findIndex((obj)=>(obj.name === found.name));
+            if(temporaryElement>-1){
+                mealItemCtx.items.splice(temporaryElement, found.name)
+            }
+            mealItemCtx.items.push({found});
             mealItemCtx.totalAmount= mealItemCtx.totalAmount + props.amount;
         };
+        console.log(mealItemCtx.items);
     }
 
 

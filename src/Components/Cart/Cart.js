@@ -6,7 +6,7 @@ const Cart = props => {
     const cartList = useContext(CartContext);
 
     const CartItems = (<ul className={classes['cart-items']}>
-        {cartList.items.map((item) => (<li>{item.name} {item.quantity} {`Total ${(item.price)*(item.quantity)}`}</li>))}
+        {cartList.items.map((item) => (<li>{item.name} {item.amount} {`Total ${(item.price)*(item.quantity)}`}</li>))}
     </ul>
     );
 
