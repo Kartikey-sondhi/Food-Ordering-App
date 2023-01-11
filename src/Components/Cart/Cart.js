@@ -7,9 +7,9 @@ const Cart = props => {
         {[{
             id: 'm1',
             name: 'Sushi',
-            description: 'Finest fish and veggies',
-            price: 22.99
-        }].map((item) => (<li>{item.name}</li>))}
+            price: 22.99,
+            quantity: 2
+        }].map((item) => (<li>{item.name} {`Total ${(item.price)*(item.quantity)}`}</li>))}
     </ul>
     );
 
